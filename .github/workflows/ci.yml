@@ -132,7 +132,7 @@ jobs:
         working-directory: ansible
         run: |
           export PATH="/opt/homebrew/bin:$PATH"
-          ansible-playbook site.yml -e "app_tag=broken-for-defense"
+          ansible-playbook site.yml -e "app_tag=${GITHUB_SHA}"
       - name: Check through Nginx
         run: |
           curl --fail --show-error --max-time 20 "http://${VM_HOST}/health"
